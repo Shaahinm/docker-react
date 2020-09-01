@@ -9,16 +9,14 @@ before_install:
 script:
   - docker run -e CI=true aviano/docker-react npm run test -- --coverage
 
-# deploy:
-#   provider: elasticbeanstalk
-#   region: "us-west-2"
-#   app: "docker"
-#   env: "Docker-env"
-#   bucket_name: "elasticbeanstalk-us-west-2-306476627547"
-#   bucket_path: "docker"
-#   on:
-#     branch: master
-#   access_key_id: $AWS_ACCESS_KEY
-#   secret_access_key:
-#     secure: "$AWS_SECRET_KEY"
-
+deploy:
+  provider: elasticbeanstalk  
+  region: "eu-west-2"
+  app: "docker-react"
+  env: "DockerReact-env"
+  bucket_name: "elasticbeanstalk-eu-west-2-959962787971"
+  bucket_path: "docker-react"
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_KEY
